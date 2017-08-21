@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/phatblat/RealmNode/issues"
   },
-  "homepage": "https://github.com/phatblat/RealmNode#readme"
+  "homepage": "https://github.com/phatblat/RealmNode#readme",
+  "dependencies": {
+    "debug": "^3.0.0",
+    "realm": "^1.10.3"
+  }
 }

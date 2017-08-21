@@ -8,3 +8,6 @@ Pods/
 bin/
 build/
 .gradle/
+
+node_modules/
+realm-object-server/
