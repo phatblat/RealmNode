@@ -2,7 +2,7 @@
 const hostname = 'imac.local'
 
 module.exports = {
-    user: 'test@log-g.co',
+    user: 'test@imac.local',
     password: 'password',
     server: 'http://' + hostname + ':9080',
     realm_url: 'realm://' + hostname + ':9080/RealmNode',
