@@ -35,10 +35,11 @@ let config = {
     ]
 }
 
-// TODO: Try using Promise
-// Realm.open(config) -> Promise
-
 // Open the realm
+// synchronously
+// module.exports.realm = new Realm(config)
+
+// asynchronously
 // Realm.openAsync(config, (error, realm) => {
 //     if (error) {
 //          console.log("Error connecting to realm at url: " + realm_url)
@@ -49,4 +50,5 @@ let config = {
 //     module.exports.realm = realm
 // })
 
-module.exports.realm = new Realm(config)
+// as a Promise
+module.exports.realm = Realm.open(config)
