@@ -39,12 +39,14 @@ let config = {
 // Realm.open(config) -> Promise
 
 // Open the realm
-Realm.openAsync(config, (error, realm) => {
-    if (error) {
-         console.log("Error connecting to realm at url: " + realm_url)
-         return
-    }
+// Realm.openAsync(config, (error, realm) => {
+//     if (error) {
+//          console.log("Error connecting to realm at url: " + realm_url)
+//          return
+//     }
+//
+//     console.log("Connected to realm at url: " + realm_url)
+//     module.exports.realm = realm
+// })
 
-    console.log("Connected to realm at url: " + realm_url)
-    module.exports.realm = realm
-})
+module.exports.realm = new Realm(config)
