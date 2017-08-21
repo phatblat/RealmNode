@@ -46,5 +46,5 @@ Realm.openAsync(config, (error, realm) => {
     }
 
     console.log("Connected to realm at url: " + realm_url)
-    // module.exports.realm = realm
+    module.exports.realm = realm
 })
