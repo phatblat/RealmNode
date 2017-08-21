@@ -5,5 +5,5 @@ module.exports = {
     user: 'test@imac.local',
     password: 'password',
     server_url: 'http://' + hostname + ':9080',
-    realm_url: 'realm://' + hostname + ':9080/RealmNode',
+    realm_url: 'realm://' + hostname + ':9080/~/RealmNode',
 }
