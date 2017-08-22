@@ -26,7 +26,9 @@ realm_promise.then((realm) => {
     // Disconnect
     Realm.Sync.User.current.logout()
     console.log("Sync user logged out")
+    process.exit()
 })
 .catch((err) => {
     console.log("Error: " + err)
+    process.exit(1)
 })
