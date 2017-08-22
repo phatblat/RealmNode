@@ -7,7 +7,7 @@ realm_promise.then((realm) => {
 
     try {
         realm.write(() => {
-            let user = realm.create('User', {id: 'user3'}, true)
+            let user = realm.create('User', {id: 'user4', name: 'User Four'}, true)
             console.log("Created user " + user)
         })
     } catch (e) {
