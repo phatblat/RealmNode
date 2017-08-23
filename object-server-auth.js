@@ -9,7 +9,24 @@ const username = configuration.user,
     realm_url = configuration.realm_url
 
 module.exports.realm_promise = new Promise((resolve, reject) => {
-    if (!Realm.Sync.User.current) {
+    login(server_url, username, password).then((user) => {
+        openRealm(user).then((realm) => {
+            resolve(realm)
+        })
+    })
+})
+
+/**
+ *
+ * @return Promise that resolves to a realm sync user.
+ */
+function login(server_url, username, password) {
+    if (Realm.Sync.User.current) {
+        console.log("Realm user " + Realm.Sync.User.current.identity + " is currently logged in")
+        return Promise.resolve(Realm.Sync.User.current)
+    }
+
+    return new Promise((resolve, reject) => {
         // Log in when not currently logged in.
         console.log("Logging into realm object server " + server_url + " as user " + username)
 
@@ -20,16 +37,21 @@ module.exports.realm_promise = new Promise((resolve, reject) => {
                  return
             }
 
-            console.log("Successfully logged in")
-            resolve(openRealm(Realm.Sync.User.current))
+            if (user) {
+                console.log("Successfully logged in")
+                resolve(user)
+                return
+            }
+
+            reject("No error, but no user returned after login.")
         })
-        return
-    }
+    })
+}
 
-    console.log("Realm user " + Realm.Sync.User.current.identity + " is currently logged in")
-    resolve(openRealm(Realm.Sync.User.current))
-})
-
+/**
+ * Private function which opens a synced realm
+ * @return Promise that resolves to a realm.
+ */
 function openRealm(user) {
     let config = {
         sync: {

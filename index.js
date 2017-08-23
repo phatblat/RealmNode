@@ -14,11 +14,14 @@ realm_promise.then((realm) => {
         console.log("Error on creation " + e)
     }
 
-    console.log("All users:")
-
+    return realm
+})
+.then((realm) => {
     let users = realm.objects('User')
-    console.log(users)
-
+    console.log("All users:\n" + users)
+    return realm
+})
+.then((realm) => {
     realm.close()
     console.log("Realm closed")
 })
@@ -28,7 +31,7 @@ realm_promise.then((realm) => {
     console.log("Sync user logged out")
     process.exit()
 })
-.catch((err) => {
-    console.log("Error: " + err)
+.catch((error) => {
+    console.log(error)
     process.exit(1)
 })
